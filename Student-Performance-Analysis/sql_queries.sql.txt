@@ -1,0 +1,27 @@
+-- View all data
+SELECT * FROM students;
+
+-- Top 5 students
+SELECT * FROM students
+ORDER BY overall_score DESC
+LIMIT 5;
+
+-- Study method impact
+SELECT study_method, AVG(overall_score)
+FROM students
+GROUP BY study_method;
+
+-- Attendance impact
+SELECT 
+CASE 
+    WHEN attendance_percentage > 75 THEN 'High'
+    ELSE 'Low'
+END AS attendance_level,
+AVG(overall_score)
+FROM students
+GROUP BY attendance_level;
+
+-- Internet access impact
+SELECT internet_access, AVG(overall_score)
+FROM students
+GROUP BY internet_access;
